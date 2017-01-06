@@ -2,6 +2,7 @@ var webpack = require('webpack');
 var path = require('path');
 var clone = require('js.clone');
 var webpackMerge = require('webpack-merge');
+var ExtractTextPlugin = require( 'extract-text-webpack-plugin' );
 
 export var commonPlugins = [
   new webpack.ContextReplacementPlugin(
@@ -18,7 +19,10 @@ export var commonPlugins = [
 
   }),
 
+  // Extract styles from 'bundle,' save to dedicated file
+  new ExtractTextPlugin( 'styles.css' )
 ];
+
 export var commonConfig = {
   // https://webpack.github.io/docs/configuration.html#devtool
   devtool: 'source-map',
@@ -33,11 +37,11 @@ export var commonConfig = {
   },
   module: {
     rules: [
-      // TypeScript
-      { test: /\.ts$/,   use: ['awesome-typescript-loader', 'angular2-template-loader'] },
-      { test: /\.html$/, use: 'raw-loader' },
-      { test: /\.css$/,  use: 'raw-loader' },
-      { test: /\.json$/, use: 'json-loader' }
+        // TypeScript
+        { test: /\.ts$/,   use: ['awesome-typescript-loader', 'angular2-template-loader'] },
+        { test: /\.html$/, use: 'raw-loader' },
+        { test: /\.css$/,  loader: ExtractTextPlugin.extract( { fallbackLoader: 'style-loader', loader: 'css-loader', publicPath: './' } ) },
+        { test: /\.json$/, use: 'json-loader' }
     ],
   },
   plugins: [

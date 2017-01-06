@@ -8,7 +8,6 @@ import { Todo } from './todo.schema'
   changeDetection: ChangeDetectionStrategy.Default,
   encapsulation: ViewEncapsulation.Emulated,
   selector: 'todo',
-  styleUrls: [ './todo.component.css' ],
   templateUrl: './todo.component.html'
 })
 export class TodoComponent {
