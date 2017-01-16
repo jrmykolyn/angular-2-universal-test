@@ -4,7 +4,7 @@ import 'ts-helpers';
 import './__workaround.browser'; // temporary until 2.1.1 things are patched in Core
 
 // Styles
-import './styles/styles.css';
+import './styles/styles.scss';
 
 // Angular 2
 import { enableProdMode } from '@angular/core';

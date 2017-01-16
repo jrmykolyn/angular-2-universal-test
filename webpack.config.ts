@@ -40,7 +40,7 @@ export var commonConfig = {
         // TypeScript
         { test: /\.ts$/,   use: ['awesome-typescript-loader', 'angular2-template-loader'] },
         { test: /\.html$/, use: 'raw-loader' },
-        { test: /\.css$/,  loader: ExtractTextPlugin.extract( { fallbackLoader: 'style-loader', loader: 'css-loader', publicPath: './' } ) },
+        { test: /\.scss$/,  loader: ExtractTextPlugin.extract( { fallbackLoader: 'style-loader', loader: 'css-loader!sass-loader', publicPath: './' } ) },
         { test: /\.json$/, use: 'json-loader' }
     ],
   },
